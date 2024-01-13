@@ -14,10 +14,10 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        kanitLight: ["Kanit", "sans-serif"],
+        kanit: ["Kanit", "sans-serif"],
       },
       colors: {
-        slate: '#e2e8f0',
+        slate: '#DDE6ED',
     },
     },
   },

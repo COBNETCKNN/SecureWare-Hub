@@ -12,7 +12,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<header class="container bg-slate py-1 mx-auto my-5 rounded-xl">
+<header class="container bg-slate py-3 mx-auto my-5 rounded-xl">
     <div class="grid grid-cols-6 gap-0 ">
         <!-- Logo -->
         <div class="col-span-1">
