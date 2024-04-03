@@ -6,10 +6,10 @@
 </section>
 <section id="trustedBy">
     <h3 class="font-kanit text-xl font-medium">Trusted by:</h3>
-    <?php if( have_rows('sidebar_trustedby') ): ?>
+    <?php if( have_rows('sidebar_trustedby', 6) ): ?>
         <ul class="slides">
-        <?php while( have_rows('sidebar_trustedby') ): the_row(); 
-            $image = get_sub_field('sidebar_trustedby_logos');
+        <?php while( have_rows('sidebar_trustedby', 6) ): the_row(); 
+            $image = get_sub_field('sidebar_trustedby_logos', 6);
             ?>
             <li class="my-3">
                 <?php echo wp_get_attachment_image( $image, 'trustedBy' ); ?>

@@ -3,42 +3,46 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    @font-face {
-        font-family: Kanit;
-        font-weight: 200;
-        src: url(/assets/fonts/Kanit-ExtraLight.ttf) format("ttf");
-      }
-    @font-face {
-        font-family: Kanit;
-        font-weight: 300;
-        src: url(/assets/fonts/Kanit-Light.ttf) format("ttf");
-      }
-    @font-face {
-      font-family: Kanit;
-      font-weight: 400;
-      src: url(/assets/fonts/Kanit-Regular.ttf) format("ttf");
-    }
-    @font-face {
-      font-family: Kanit;
-      font-weight: 500;
-      src: url(/assets/fonts/Kanit-Medium.ttf) format("ttf");
-    }
-    @font-face {
-        font-family: Kanit;
-        font-weight: 600;
-        src: url(/assets/fonts/Kanit-SemiBold.ttf) format("ttf");
-    }
-    @font-face {
-        font-family: Kanit;
-        font-weight: 700;
-        src: url(/assets/fonts/Kanit-Bold.ttf) format("ttf");
-    }
-    @font-face {
-        font-family: Kanit;
-        font-weight: 800;
-        src: url(/assets/fonts/Kanit-ExtraBold.ttf) format("ttf");
-    }
+@font-face {
+  font-family: 'Kanit';
+  src: url('../assets/fonts/Kanit-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Kanit';
+  src: url('../assets/fonts/Kanit-Thin.ttf') format('truetype');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'Kanit';
+  src: url('../assets/fonts/Kanit-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Kanit';
+  src: url('../assets/fonts/Kanit-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Kanit';
+  src: url('../assets/fonts/Kanit-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Kanit';
+  src: url('../assets/fonts/Kanit-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Kanit';
+  src: url('../assets/fonts/Kanit-SemiBold.ttf') format('truetype');
+  font-weight: 600;
 }
 
 
@@ -120,4 +124,10 @@ body {
 
   .wp-block-search__input {
     border-radius: 15px;
+  }
+
+  .singlePost_content__wrapper h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 1.2rem 0 0.5rem 0;
   }
