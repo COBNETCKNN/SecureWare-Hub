@@ -1,18 +1,18 @@
 <?php get_header(); ?>
 
 <section id="content">
-    <div class="container mx-auto bg-slate py-1 rounded-xl">
-        <div class="grid grid-cols-8 gap-5">
+    <div class="container mx-auto bg-slate py-1 lg:rounded-xl">
+        <div class="grid lg:grid-cols-8 gap-5">
             <!-- Blog posts -->
-            <div class="col-span-6 my-4">
+            <div class="lg:col-span-6 my-4">
                 <?php
+
+                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 // Define custom query parameters
                 $args = array(
-                    'post_type'      => 'post',          // The post type you want to display (e.g., post, page)
-                    'posts_per_page' => 10,              // Number of posts to display
-                    'orderby'        => 'date',          // Order posts by date
-                    'order'          => 'DESC',          // Display posts in descending order
-                    'post_status'    => 'publish',       // Display only published posts
+                    'post_type'=>'post', // Your post type name
+                    'posts_per_page' => 10,
+                    'paged' => $paged,
                 );
 
                 // Instantiate custom query
@@ -23,39 +23,39 @@
                     // Start the loop
                     while ($custom_query->have_posts()) : $custom_query->the_post(); ?>
                         <!-- Content -->
-                            <div class="mx-7 my-6 px-10 bg-neutral-100 rounded-lg shadow-md">
-                                <div class="grid grid-cols-6 gap-2">
-                                    <!-- Featured image -->
-                                    <?php $image = get_the_post_thumbnail( null, 'thumbnail', [ 'alt' => esc_attr( get_the_title() ), 'title' => esc_attr( get_the_title() ) ] ); ?>
-                                    <div class="col-span-1 flex justify-center items-center mr-8">
-                                        <?php echo $image; ?>
-                                    </div>
-                                    <div class="col-span-5 my-6 ">
-                                        <div class="mt-2">
-                                            <h1>
-                                                <a href="<?php the_permalink(); ?>" class="text-2xl font-medium text-gray-700 hover:underline font-kanit" target="_blank"><?php the_title(); ?></a>
-                                            </h1>
-                                            <p class="mt-2 text-gray-600 font-kanit font-normal"><?php echo wp_trim_words(get_the_content(), 55);?></p>
-                                        </div>
-                                        <div class="relative flex items-center justify-end mt-4">
-                                            <a type="button" href="<?php the_permalink(); ?>" class="button-74 text-black py-2 px-5 border border-black rounded-3xl font-kanit" target="_blank">Read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <?php get_template_part('partials/post', 'card'); ?>   
                     <?php 
-                    endwhile;
+                    endwhile; ?>
+                    <div class="pagination_links flex justify-center text-black font-kanit text-lg font-medium">
+                        <?php
+                        $total_pages = $custom_query->max_num_pages;
 
+                        if ($total_pages > 1){
+                    
+                            $current_page = max(1, get_query_var('paged'));
+                    
+                            echo paginate_links(array(
+                                'base' => get_pagenum_link(1) . '%_%',
+                                'format' => '/page/%#%',
+                                'current' => $current_page,
+                                'total' => $total_pages,
+                                'prev_text'    => __('« Prev'),
+                                'next_text'    => __('Next »'),
+                            ));
+                        }   ?>
+                    </div>
+ 
+                <?php 
                     // Reset post data to restore the original query
                     wp_reset_postdata();
-                else :
+                else:
                     // If no posts are found
                     echo 'No posts found';
                 endif;
                 ?>
             </div>
             <!-- Sidebar -->
-            <div class="col-span-2 my-10 pr-10">
+            <div class="hidden lg:block col-span-2 my-10 pr-10">
                 <?php get_sidebar( 'primary' ); ?>
             </div>
         </div>
