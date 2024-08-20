@@ -52,9 +52,9 @@
 <header class="">
   <nav id="navbar" class="lg:hidden w-full">
         <div class="container mx-auto">
-            <div class="flex justify-between bg-slate px-10">
+            <div class="flex justify-between bg-slate px-5 py-2">
                 <!-- LOGO SECTION -->
-				<div class="site-branding">
+				<div class="site-branding flex justify-start">
 					<?php
 					if ( has_custom_logo() ) {
 						the_custom_logo();

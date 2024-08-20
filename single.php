@@ -50,23 +50,57 @@
                 </div>
                 <div class="m-10">
                     <?php if( have_rows('single_post_fields') ): ?>
-                        <?php while( have_rows('single_post_fields') ): the_row(); ?>
+                        <?php while( have_rows('single_post_fields') ): the_row(); 
+                        
+                        $images = get_sub_field('software_gallery'); // Assuming you are using ACF to get gallery images
+                        $size = 'full';
+                        ?>
                             <!-- Gallery -->
                             <div class="singlePost_gallery">
                                 <h2 class="font-kanit text-black font-normal text-center text-3xl mb-5">Gallery:</h2>
                                 <div class="gallery_wrapper">
-                                    <div id="gallery" class="grid grid-cols-3 gap-4">
+                                    <?php 
+                                    // Check if $images exists and is an array
+                                    if ($images && is_array($images)) {
+                                        // Count the number of images
+                                        $image_count = count($images);
+
+                                        // Run different code based on the number of images
+                                        if ($image_count == 1) { ?>
+
+                                            <div id="gallery" class="singleGallery_item">
+                                                <?php
+
+                                                if ($images) :
+                                                    foreach ($images as $image) : 
+                                                        echo wp_get_attachment_image( $image, $size );
+                                                    ?>
+                                                        
+                                                    <?php endforeach;
+                                                endif; ?>
+                                            </div>
+
                                         <?php
-                                        $images = get_sub_field('software_gallery'); // Assuming you are using ACF to get gallery images
-                                        $size = 'full';
-                                        if ($images) :
-                                            foreach ($images as $image) : 
-                                                echo wp_get_attachment_image( $image, $size );
-                                            ?>
-                                                
-                                            <?php endforeach;
-                                        endif; ?>
-                                    </div>
+                                        } else { ?>
+                                            <div id="gallery" class="multipleGallery_item grid md:grid-cols-3 gap-4">
+                                                <?php
+
+                                                if ($images) :
+                                                    foreach ($images as $image) : 
+                                                        echo wp_get_attachment_image( $image, $size );
+                                                    ?>
+                                                        
+                                                    <?php endforeach;
+                                                endif; ?>
+                                            </div>
+                                        <?php
+                                        }
+                                    } else {
+                                        // Handle case when there are no images or the field is empty
+                                        echo 'No images in the gallery.';
+                                    }
+                                    ?>
+
                                 </div>
                             </div>
                             <!-- Download Button -->

@@ -4,14 +4,14 @@
     <div class="container mx-auto bg-slate py-1 lg:rounded-xl">
         <div class="grid lg:grid-cols-8 gap-5">
             <!-- Blog posts -->
-            <div class="lg:col-span-6 my-4">
+            <div class="lg:col-span-6 lg:my-4">
                 <?php
 
                 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 // Define custom query parameters
                 $args = array(
                     'post_type'=>'post', // Your post type name
-                    'posts_per_page' => 10,
+                    'posts_per_page' => 5,
                     'paged' => $paged,
                 );
 

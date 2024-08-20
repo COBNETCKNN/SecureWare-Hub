@@ -126,10 +126,26 @@ body {
     border-radius: 15px;
   }
 
-  .singlePost_content__wrapper h2 {
-    font-size: 24px;
-    font-weight: 500;
-    margin: 1.2rem 0 0.5rem 0;
+  .singlePost_content__wrapper {
+
+    h2 {
+      font-size: 24px;
+      font-weight: 500;
+      margin: 1.2rem 0 0.5rem 0;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+      margin: 1.2rem 0 0.5rem 0;
+    }
+
+    h4 {
+      font-size: 18px;
+      font-weight: 500;
+      margin: 1.2rem 0 0.5rem 0;
+    }
+
   }
 
   .content__wrapper h2 {
@@ -215,12 +231,36 @@ body {
   text-decoration: underline;
 }
 
-#gallery {
+.multipleGallery_item {
    img {
     border-radius: 8px;
     box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    margin-left: 5px;
+    margin-right: 5px;
+    max-height: 190px;
+    width: 100%; /* Or auto */
+    object-fit: cover;
    }
 }
+
+@media (min-width: 768px) and (max-width: 1460px) {
+  .multipleGallery_item {
+    img {
+      max-height: 120px;
+     }
+  }
+}
+
+.singleGallery_item {
+  justify-content: center;
+
+  img {
+    max-height: 550px;
+    width: 100%; /* Or auto */
+    object-fit: cover;
+  }
+}
+
 
 .howToInstall_instructions {
   li {
@@ -380,4 +420,38 @@ a.pi-h { background: #c8232c; }
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+    /* CSS */
+  .button-74, .wp-block-search__button {
+    background-color: #fff;
+    border: 2px solid #422800;
+    border-radius: 30px;
+    box-shadow: #499F9D 4px 4px 0 0;
+    color: #422800;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 0 10px;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .custom-logo-link {
+    img {
+      height: 60px;
+      width: 215px;
+    }
+  }
+
+  .share-list a {
+    width: 40px;
+    height: 40px;
+  }
 }
